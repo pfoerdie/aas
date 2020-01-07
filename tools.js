@@ -27,8 +27,14 @@ exports.is = {
     number: function (value) {
         return typeof value === 'number' && !isNaN(value);
     },
+    Number: function (value) {
+        return typeof value === 'number' && !isNaN(value) && value < Infinity && value > -Infinity;
+    },
     string: function (value) {
         return typeof value === 'string';
+    },
+    String: function (value) {
+        return typeof value === 'string' && value.length > 0;
     },
     function: function (value) {
         return typeof value === 'function';
@@ -37,6 +43,9 @@ exports.is = {
         return Array.isArray(value);
     },
     object: function (value) {
+        return typeof value == 'object';
+    },
+    Object: function (value) {
         return value && typeof value == 'object';
     }
 };
